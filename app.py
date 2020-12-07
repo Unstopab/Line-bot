@@ -12,8 +12,8 @@ from linebot.models import (
 
 app = Flask(__name__)
 
-line_bot_api = LineBotApi('q0O8k8sblfmpz42xRnGNC1B5gAjVUcWLLBr4HQfTvsNws++RQ1gvdIDbvjla/SFhHPXUAeeNVt0rC+RRoE7KKm2DDcrx7ZK45FdkEgekUvMeM+QNp83B//jFTZGO4EScK27bgYgNyB1/irf2h+eh+AdB04t89/1O/w1cDnyilFU=')
-handler = WebhookHandler('5c2adda5ca21f4451e92a65dfc24a287')
+line_bot_api = LineBotApi('9rvIouCQrgODVyuKEfdDdFbaxPffXrTs9qyYuugiJoqHjITy/lcCPls0Xabr8XFzDtN2wVgNkHLmEr4RjgYLcnQjukZzDENd6U8y4gJYgcdLyNPL0nn2x24SABPLmApQ7keULkePNWQZf2AR3QG4oQdB04t89/1O/w1cDnyilFU=')
+handler = WebhookHandler('b3dd7bebba7dd30ab06e25add81eb054')
 
 
 @app.route("/callback", methods=['POST']) #有人用瀏覽器發送訊號到我的網址，我再執行下面的程式
