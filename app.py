@@ -16,7 +16,7 @@ line_bot_api = LineBotApi('9rvIouCQrgODVyuKEfdDdFbaxPffXrTs9qyYuugiJoqHjITy/lcCP
 handler = WebhookHandler('b3dd7bebba7dd30ab06e25add81eb054')
 
 
-@app.route("https://line-bot-rent.herokuapp.com/callback", methods=['POST']) #有人用瀏覽器發送訊號到我的網址，我再執行下面的程式
+@app.route("/callback", methods=['POST']) #有人用瀏覽器發送訊號到我的網址，我再執行下面的程式
 def callback():
     # get X-Line-Signature header value
     signature = request.headers['X-Line-Signature']
