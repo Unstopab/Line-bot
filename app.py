@@ -46,20 +46,20 @@ def handle_message(event):
     
     if '紀' in event.message.text:  #-----
         
-    try:
-        record_list = prepare_record(event.message.text) #這一段我還在測試中 是要用來寫入資料庫的><
-        reply = line_insert_record(record_list)
+        try:
+            record_list = prepare_record(event.message.text) #這一段我還在測試中 是要用來寫入資料庫的><
+            reply = line_insert_record(record_list)
 
-        line_bot_api.reply_message(
-            event.reply_token,
-            TextSendMessage(text=reply)
-        )
-            
-    except:
-        line_bot_api.reply_message(
-            event.reply_token,
-            TextSendMessage(text='失敗了')   #-----
-        )
+            line_bot_api.reply_message(
+                event.reply_token,
+                TextSendMessage(text=reply)
+            )
+                
+        except:
+            line_bot_api.reply_message(
+                event.reply_token,
+                TextSendMessage(text='失敗了')   #-----
+            )
 
 
 if __name__ == "__main__":
