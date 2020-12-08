@@ -10,7 +10,7 @@ from linebot.models import (
     MessageEvent, TextMessage, TextSendMessage,
 )
 
-import call_database
+import call_database, utils
 
 app = Flask(__name__)
 
@@ -48,7 +48,8 @@ def handle_message(event):
         
         try:
             # record_list = prepare_record(event.message.text) #這一段我還在測試中 是要用來寫入資料庫的><
-            reply = line_insert_record(event.message.text)
+            record_list = prepare_record(event.message.text)
+            reply = line_insert_record(record_list)
 
             line_bot_api.reply_message(
                 event.reply_token,
@@ -56,11 +57,10 @@ def handle_message(event):
             )
             
         except:
-            line_bot_api.reply_message(
-                event.reply_token,
-                TextSendMessage(text='失敗了')   #-----
+        line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text='失敗了')
             )
-
 
 if __name__ == "__main__":
     app.run()
