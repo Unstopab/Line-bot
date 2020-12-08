@@ -10,7 +10,7 @@ from linebot.models import (
     MessageEvent, TextMessage, TextSendMessage,
 )
 
-import call_ddatabase
+import call_database
 
 app = Flask(__name__)
 
