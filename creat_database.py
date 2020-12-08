@@ -6,11 +6,9 @@ DATABASE_URL = os.popen('heroku config:get DATABASE_URL -a line-bot-rent').read(
 conn = psycopg2.connect(DATABASE_URL, sslmode='require')
 cursor = conn.cursor()
 
-create_table_query = '''CREATE TABLE alpaca_training(
+create_table_query = '''CREATE TABLE rent_info(
     record_no serial PRIMARY KEY,
-    alpaca_name VARCHAR (50) NOT NULL,
-    training VARCHAR (50) NOT NULL,
-    duration INTERVAL NOT NULL,
+    message VARCHAR (100) NOT NULL,
     date DATE NOT NULL
     );'''
     
