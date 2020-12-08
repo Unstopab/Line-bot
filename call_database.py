@@ -9,7 +9,7 @@ def line_insert_record(record_list):
     cursor = conn.cursor()
 
     table_columns = '(message)'
-    postgres_insert_query = f"""INSERT INTO alpaca_training {table_columns} VALUES (%s)"""
+    postgres_insert_query = f"""INSERT INTO rent_info {table_columns} VALUES (%s)"""
 
     cursor.executemany(postgres_insert_query)
     conn.commit()
