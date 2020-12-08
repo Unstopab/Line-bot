@@ -10,8 +10,6 @@ from linebot.models import (
     MessageEvent, TextMessage, TextSendMessage,
 )
 
-import call_database, utils
-
 app = Flask(__name__)
 
 line_bot_api = LineBotApi('9rvIouCQrgODVyuKEfdDdFbaxPffXrTs9qyYuugiJoqHjITy/lcCPls0Xabr8XFzDtN2wVgNkHLmEr4RjgYLcnQjukZzDENd6U8y4gJYgcdLyNPL0nn2x24SABPLmApQ7keULkePNWQZf2AR3QG4oQdB04t89/1O/w1cDnyilFU=')
@@ -41,26 +39,26 @@ def callback():
 def handle_message(event):
     line_bot_api.reply_message(
         event.reply_token,
-        TextSendMessage(text="你好阿")) #event.message.text是使用者傳來的訊息，前面這行程式碼是回傳使用者傳來的訊息
+        TextSendMessage(text=event.message.text)) #event.message.text是使用者傳來的訊息，前面這行程式碼是回傳使用者傳來的訊息
 
     
-    if '紀錄啦' in event.message.text:  #-----
+    if '紀' in event.message.text:  #-----
         
-        try:
-            # record_list = prepare_record(event.message.text) #這一段我還在測試中 是要用來寫入資料庫的><
-            record_list = prepare_record(event.message.text)
-            reply = line_insert_record(record_list)
+    try:
+        record_list = prepare_record(event.message.text) #這一段我還在測試中 是要用來寫入資料庫的><
+        reply = line_insert_record(record_list)
 
-            line_bot_api.reply_message(
-                event.reply_token,
-                TextSendMessage(text=reply)
-            )
-            
-        except:
         line_bot_api.reply_message(
             event.reply_token,
-            TextSendMessage(text='失敗了')
-            )
+            TextSendMessage(text=reply)
+        )
+            
+    except:
+        line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text='失敗了')   #-----
+        )
+
 
 if __name__ == "__main__":
     app.run()
