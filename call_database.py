@@ -28,14 +28,14 @@ def line_insert_record2(record_list2):
     conn = psycopg2.connect(DATABASE_URL, sslmode='require')
     cursor = conn.cursor()
 
-    table_columns = '(rent_type)'
-    postgres_insert_query = f"""INSERT INTO rent_info {table_columns} VALUES (%s)"""
+    # table_columns = '(rent_type)'
+    postgres_insert_query = f"""INSERT INTO rent_info (rent_type) VALUES (%s)"""
 
     cursor.executemany(postgres_insert_query, record_list2)
     conn.commit()
 
     message2 = f"恭喜您！ {cursor.rowcount} 筆資料成功匯入 rent_info 表單！"
-    print(message)
+    print(message2)
 
     cursor.close()
     conn.close()
