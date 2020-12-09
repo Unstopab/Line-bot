@@ -3,6 +3,7 @@ import re
 import random
 import datetime
 
+
 def prepare_record(text):
     text_list = text.split('\n')
     
