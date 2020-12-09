@@ -33,7 +33,7 @@ def prepare_record(text):
 def prepare_record2(text):
     text_list = text.split(" ")
     
-
-    record_list.append(text_list[1])
+    record_list2 = []
+    record_list2.append(text_list[1])
         
     return record_list2
