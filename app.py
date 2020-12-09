@@ -39,9 +39,9 @@ def callback():
 
 @handler.add(MessageEvent, message=TextMessage) #就我所知我們的動作就是寫在handler之下
 def handle_message(event):
-    line_bot_api.reply_message(
-        event.reply_token,
-        TextSendMessage(text=event.message.text)) #event.message.text是使用者傳來的訊息，前面這行程式碼是回傳使用者傳來的訊息
+    # line_bot_api.reply_message(
+    #     event.reply_token,
+    #     TextSendMessage(text=event.message.text)) #event.message.text是使用者傳來的訊息，前面這行程式碼是回傳使用者傳來的訊息
 
     
     if '紀' in event.message.text:  #-----
