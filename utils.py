@@ -36,4 +36,4 @@ def prepare_record2(text):
 
     record_list.append(text_list[1])
         
-    return record_list
+    return record_list2

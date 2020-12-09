@@ -43,7 +43,7 @@ def insert_record2(event):
         
         try:
             record_list = utils.prepare_record2(event.message.text)
-            reply = call_database.line_insert_record2(record_list)
+            reply = call_database.line_insert_record2(record_list2)
 
             line_bot_api.reply_message(
                 event.reply_token,

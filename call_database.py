@@ -22,7 +22,7 @@ def line_insert_record(record_list):
     return message
 
 
-def line_insert_record2(record_list):
+def line_insert_record2(record_list2):
     DATABASE_URL = os.environ['DATABASE_URL']
 
     conn = psycopg2.connect(DATABASE_URL, sslmode='require')
@@ -31,13 +31,13 @@ def line_insert_record2(record_list):
     table_columns = '(rent_type)'
     postgres_insert_query = f"""INSERT INTO rent_info {table_columns} VALUES (%s)"""
 
-    cursor.executemany(postgres_insert_query, record_list)
+    cursor.executemany(postgres_insert_query, record_list2)
     conn.commit()
 
-    message = f"恭喜您！ {cursor.rowcount} 筆資料成功匯入 rent_info 表單！"
+    message2 = f"恭喜您！ {cursor.rowcount} 筆資料成功匯入 rent_info 表單！"
     print(message)
 
     cursor.close()
     conn.close()
     
-    return message
+    return message2
