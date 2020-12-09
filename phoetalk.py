@@ -35,3 +35,27 @@ def insert_record(event):
         return True
     else:
         return False
+
+
+def insert_record2(event):
+    
+    if '租屋資料回傳' in event.message.text:
+        
+        try:
+            record_list = utils.prepare_record(event.message.text)
+            reply = call_database.line_insert_record(record_list)
+
+            line_bot_api.reply_message(
+                event.reply_token,
+                TextSendMessage(text=reply)
+            )
+
+        except:
+            line_bot_api.reply_message(
+                event.reply_token,
+                TextSendMessage(text='失敗了')
+            )
+
+        return True
+    else:
+        return False

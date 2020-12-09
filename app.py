@@ -44,9 +44,10 @@ def handle_message(event):
     #     TextSendMessage(text=event.message.text)) #event.message.text是使用者傳來的訊息，前面這行程式碼是回傳使用者傳來的訊息
 
     
-    if '紀' in event.message.text:  #-----
-        reply = phoetalk.insert_record(event)        
-
+    if '草泥馬訓練紀錄' in event.message.text:  #-----
+        reply = phoetalk.insert_record(event)
+    elif '租屋資料回傳' in event.message.text:        
+        reply = phoetalk.insert_record2(event)
 
 if __name__ == "__main__":
     app.run()

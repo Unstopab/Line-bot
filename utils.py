@@ -29,3 +29,11 @@ def prepare_record(text):
         record_list.append(record)
         
     return record_list
+
+def prepare_record2(text):
+    text_list = text.split()
+    
+
+    record_list = text_list[1]
+        
+    return record_list

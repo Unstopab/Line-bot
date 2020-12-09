@@ -6,7 +6,8 @@ DATABASE_URL = os.popen('heroku config:get DATABASE_URL -a line-bot-rent').read(
 conn = psycopg2.connect(DATABASE_URL, sslmode='require')
 cursor = conn.cursor()
 
-cursor.execute("SELECT column_name, data_type FROM information_schema.columns WHERE table_name = 'alpaca_training'")
+# cursor.execute("SELECT column_name, data_type FROM information_schema.columns WHERE table_name = 'alpaca_training'")
+cursor.execute("SELECT * FROM alpaca_training")
 
 data = []
 while True:
