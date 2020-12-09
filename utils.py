@@ -31,9 +31,9 @@ def prepare_record(text):
     return record_list
 
 def prepare_record2(text):
-    text_list = text.split()
+    text_list = text.split(" ")
     
 
-    record_list = text_list[1]
+    record_list.append(text_list[1])
         
     return record_list

@@ -42,8 +42,8 @@ def insert_record2(event):
     if '租屋資料回傳' in event.message.text:
         
         try:
-            record_list = utils.prepare_record(event.message.text)
-            reply = call_database.line_insert_record(record_list)
+            record_list = utils.prepare_record2(event.message.text)
+            reply = call_database.line_insert_record2(record_list)
 
             line_bot_api.reply_message(
                 event.reply_token,
