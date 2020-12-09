@@ -10,7 +10,7 @@ import configparser
 import random
 
 # 我們的函數
-import utils, CallDatabase
+import utils, call_database
 
 # LINE 聊天機器人的基本資料
 config = configparser.ConfigParser()
