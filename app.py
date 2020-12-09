@@ -48,6 +48,9 @@ def handle_message(event):
         reply = phoetalk.insert_record(event)
     elif '租屋' in event.message.text:        
         reply = phoetalk.insert_record2(event)
-
+    else:
+        line_bot_api.reply_message(
+        event.reply_token,
+        TextSendMessage(text="我難過"))
 if __name__ == "__main__":
     app.run()
