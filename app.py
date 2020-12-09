@@ -46,7 +46,7 @@ def handle_message(event):
     
     if '草泥馬訓練紀錄' in event.message.text:  #-----
         reply = phoetalk.insert_record(event)
-    elif '租屋資料回傳' in event.message.text:        
+    elif '租屋' in event.message.text:        
         reply = phoetalk.insert_record2(event)
 
 if __name__ == "__main__":
