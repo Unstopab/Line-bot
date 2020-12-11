@@ -29,7 +29,7 @@ def line_insert_record2(record_list2):
     cursor = conn.cursor()
 
     table_columns = '(rent_type, price)'
-    postgres_insert_query = f"""INSERT INTO rent_info {table_columns} VALUES (%s,%d)"""
+    postgres_insert_query = f"""INSERT INTO rent_info {table_columns} VALUES (%s,%s)"""
 
     cursor.executemany(postgres_insert_query, record_list2)
     conn.commit()

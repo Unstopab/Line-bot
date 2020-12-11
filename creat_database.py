@@ -15,7 +15,7 @@ cursor = conn.cursor()
 #     );'''
 
 create_table_query = '''CREATE TABLE rent_info(
-    record_no serial PRIMARY KEY,
+    record_num serial PRIMARY KEY,
     rent_type VARCHAR (50) NOT NULL,
     price INTEGER NOT NULL
     );'''
