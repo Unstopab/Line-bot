@@ -14,7 +14,10 @@ line_bot_api = LineBotApi('9rvIouCQrgODVyuKEfdDdFbaxPffXrTs9qyYuugiJoqHjITy/lcCP
 
 
 def insert_record(event):
-            
+
+    if '草泥馬訓練紀錄' in event.message.text:  #-----
+        reply = phoetalk.insert_record(event)
+
         try:
             record_list = utils.prepare_record(event.message.text)
             reply = call_database.line_insert_record(record_list)
@@ -36,7 +39,10 @@ def insert_record(event):
 
 
 def insert_record2(event):
-        
+    
+    if '租屋' in event.message.text:  #-----
+        reply = phoetalk.insert_record(event)
+
         try:
             record_list2 = utils.prepare_record2(event.message.text)
             reply = call_database.line_insert_record2(record_list2)
