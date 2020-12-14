@@ -39,7 +39,7 @@ def insert_record(event):
 
 def insert_record2(event):
     
-    if '租屋' in event.message.text:
+    if '輸入資料' in event.message.text:
         
         try:
             record_list2 = utils.prepare_record2(event.message.text)
