@@ -51,18 +51,18 @@ def handle_message(event):
     template=ImageCarouselTemplate(
         columns=[
             ImageCarouselColumn(
-                image_url='https://example.com/item1.jpg',
+                image_url='https://hp1.591.com.tw/house/active/2020/12/06/160724847605069017_210x158.crop.jpg',
                 action=PostbackAction(
                     label='postback1',
-                    display_text='postback text1',
+                    display_text='我要看房!',
                     data='action=buy&itemid=1'
                 )
             ),
             ImageCarouselColumn(
-                image_url='https://example.com/item2.jpg',
+                image_url='https://hp2.591.com.tw/house/active/2020/10/25/160361445000724103_210x158.crop.jpg',
                 action=PostbackAction(
                     label='postback2',
-                    display_text='postback text2',
+                    display_text='我也要看房!',
                     data='action=buy&itemid=2'
                 )
             )
