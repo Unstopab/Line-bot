@@ -7,7 +7,7 @@ from linebot.exceptions import (
     InvalidSignatureError
 )
 from linebot.models import (
-    MessageEvent, TextMessage, TextSendMessage,TemplateSendMessage
+    MessageEvent, TextMessage, TextSendMessage,TemplateSendMessage,ImageCarouselTemplate
 )
 
 import utils, call_database, phoetalk
