@@ -42,6 +42,30 @@ def handle_message(event):
     # line_bot_api.reply_message(
     #     event.reply_token,
     #     TextSendMessage(text=event.message.text)) #event.message.text是使用者傳來的訊息，前面這行程式碼是回傳使用者傳來的訊息
+    if '圖片' in event.message.text:
+        image_carousel_template_message = TemplateSendMessage(
+    alt_text='ImageCarousel template',
+    template=ImageCarouselTemplate(
+        columns=[
+            ImageCarouselColumn(
+                image_url='https://example.com/item1.jpg',
+                action=PostbackAction(
+                    label='postback1',
+                    display_text='postback text1',
+                    data='action=buy&itemid=1'
+                )
+            ),
+            ImageCarouselColumn(
+                image_url='https://example.com/item2.jpg',
+                action=PostbackAction(
+                    label='postback2',
+                    display_text='postback text2',
+                    data='action=buy&itemid=2'
+                )
+            )
+        ]
+    )
+)
 
     
     if '草泥馬訓練紀錄' in event.message.text:  #-----
