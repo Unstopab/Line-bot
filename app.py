@@ -3,6 +3,8 @@ from flask import Flask, request, abort
 from linebot import (
     LineBotApi, WebhookHandler
 )
+
+import json
 from linebot.exceptions import (
     InvalidSignatureError
 )
@@ -67,8 +69,159 @@ def handle_message(event):
         ]
     )
 )
+        line_bot_api.reply_message(
+        event.reply_token,
+        image_carousel_template_message)    
         return
-    
+
+    if '按鈕' in event.message.text:
+
+        #這邊改成找房子的各個條件
+
+        #請輸入您想找台北市的哪一區？中山區、大安區、信義區、內湖區、士林區、北投區、中正區、松山區、大同區、萬華區、文山區、南港區、不限
+
+        district=TextSendMessage(
+            text = "請輸入您想找台北市的哪一區？",
+            quick_reply = QuickReply(
+                items = [
+                    QuickReplyButton(
+                        action = MessageAction(label = "中山區", text = "中山區")
+                        ),
+                    QuickReplyButton(
+                        action = MessageAction(label = "大安區", text = "大安區")
+                        ),
+                    QuickReplyButton(
+                        action = MessageAction(label = "信義區", text = "信義區")
+                        ),
+                    QuickReplyButton(
+                        action = MessageAction(label = "內湖區", text = "內湖區")
+                        ),
+                    QuickReplyButton(
+                        action = MessageAction(label = "士林區", text = "士林區")
+                        ),
+                    QuickReplyButton(
+                        action = MessageAction(label = "北投區", text = "北投區")
+                        ),
+                    QuickReplyButton(
+                        action = MessageAction(label = "中正區", text = "中正區")
+                        ),
+                    QuickReplyButton(
+                        action = MessageAction(label = "松山區", text = "松山區")
+                        ),
+                    QuickReplyButton(
+                        action = MessageAction(label = "大同區", text = "大同區")
+                        ),
+                    QuickReplyButton(
+                        action = MessageAction(label = "萬華區", text = "萬華區")
+                        ),
+                    QuickReplyButton(
+                        action = MessageAction(label = "文山區", text = "文山區")
+                        ),
+                    QuickReplyButton(
+                        action = MessageAction(label = "南港區", text = "南港區")
+                        ),
+                    QuickReplyButton(
+                        action = MessageAction(label = "不限", text = "不限")
+                        )
+                    ]))
+
+
+
+
+        #輸入您想要的房屋類型(整層住家、獨立套房、分租套房、雅房、車位、不限、其他)
+
+        build_type=TextSendMessage(
+            text = "請輸入您想要的房屋類型？",
+            quick_reply = QuickReply(
+                items = [
+                    QuickReplyButton(
+                        action = MessageAction(label = "整層住家", text = "整層住家")
+                        ),
+                    QuickReplyButton(
+                        action = MessageAction(label = "獨立套房", text = "獨立套房")
+                        ),
+                    QuickReplyButton(
+                        action = MessageAction(label = "分租套房", text = "分租套房")
+                        ),
+                    QuickReplyButton(
+                        action = MessageAction(label = "雅房", text = "雅房")
+                        ),
+                    QuickReplyButton(
+                        action = MessageAction(label = "車位", text = "車位")
+                        ),
+                    QuickReplyButton(
+                        action = MessageAction(label = "其他", text = "其他")
+                        ),
+                    QuickReplyButton(
+                        action = MessageAction(label = "不限", text = "不限")
+                        )
+                    ]))
+
+
+        #輸入您每個月欲付的租金(5000以下、5000-10000、10000-20000、20000-30000、30000-40000、40000-60000、60000以上、不限)
+
+        rent=TextSendMessage(
+            text = "請輸入您每個月欲付的租金？",
+            quick_reply = QuickReply(
+                items = [
+                    QuickReplyButton(
+                        action = MessageAction(label = "5000以下", text = "5000以下")
+                        ),
+                    QuickReplyButton(
+                        action = MessageAction(label = "5000-10000", text = "5000-10000")
+                        ),
+                    QuickReplyButton(
+                        action = MessageAction(label = "10000-20000", text = "10000-20000")
+                        ),
+                    QuickReplyButton(
+                        action = MessageAction(label = "20000-30000", text = "20000-30000")
+                        ),
+                    QuickReplyButton(
+                        action = MessageAction(label = "30000-40000", text = "30000-40000")
+                        ),
+                    QuickReplyButton(
+                        action = MessageAction(label = "40000-60000", text = "40000-60000")
+                        ),
+                    QuickReplyButton(
+                        action = MessageAction(label = "60000以上", text = "60000以上")
+                        ),
+                    QuickReplyButton(
+                        action = MessageAction(label = "不限", text = "不限")
+                        )
+                    ]))
+
+        #輸入您想要的坪數(10以下、10-20、20-30、30-40、40-50、50以上、不限)
+
+        ping=TextSendMessage(
+            text = "請輸入您想要的坪數？",
+            quick_reply = QuickReply(
+                items = [
+                    QuickReplyButton(
+                        action = MessageAction(label = "10以下", text = "10以下")
+                        ),
+                    QuickReplyButton(
+                        action = MessageAction(label = "10-20", text = "10-20")
+                        ),
+                    QuickReplyButton(
+                        action = MessageAction(label = "20-30", text = "20-30")
+                        ),
+                    QuickReplyButton(
+                        action = MessageAction(label = "30-40", text = "30-40")
+                        ),
+                    QuickReplyButton(
+                        action = MessageAction(label = "40-50", text = "40-50")
+                        ),
+                    QuickReplyButton(
+                        action = MessageAction(label = "50以上", text = "50以上")
+                        ),
+                    QuickReplyButton(
+                        action = MessageAction(label = "不限", text = "不限")
+                        )
+                    ]))
+
+
+        return
+
     if '草泥馬訓練紀錄' in event.message.text:  #-----
         reply = phoetalk.insert_record(event)
     elif '輸入資料' in event.message.text:        
