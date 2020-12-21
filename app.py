@@ -66,7 +66,7 @@ def handle_message(event):
         ]
     )
 )
-
+        return
     
     if '草泥馬訓練紀錄' in event.message.text:  #-----
         reply = phoetalk.insert_record(event)
