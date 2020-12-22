@@ -355,27 +355,27 @@ def handle_message(event):
     #     event.reply_token,
     #     TextSendMessage(text=event.message.text)) #event.message.text是使用者傳來的訊息，前面這行程式碼是回傳使用者傳來的訊息
     
-    if "按鈕" in event.message.text:
+    if "我要看房" in event.message.text:
 
         buttons_template_message = TemplateSendMessage(
     alt_text='Buttons template',
     template=ButtonsTemplate(
-        thumbnail_image_url='https://example.com/image.jpg',
-        title='Menu',
-        text='Please select',
+        thumbnail_image_url='https://hp1.591.com.tw/house/active/2020/08/20/159790889960316104_210x158.crop.jpg',
+        title='台北租屋',
+        text='請輸入您想找台北市的哪一區',
         actions=[
             PostbackAction(
-                label='postback',
-                display_text='postback text',
+                label='中山區',
+                text='中山區',
                 data='action=buy&itemid=1'
             ),
             MessageAction(
-                label='message',
-                text='message text'
+                label='點我看看',
+                text='點我看看'
             ),
             URIAction(
-                label='uri',
-                uri='http://example.com/'
+                label='自己上591租屋網',
+                uri='https://rent.591.com.tw/?kind=0&region=1'
             )
         ]
     )
