@@ -1,7 +1,7 @@
 line-bot-sdk
+selenium
 gunicorn
 flask
 psycopg2
 django
 bs4
-selenium
