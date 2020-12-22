@@ -53,7 +53,7 @@ def callback(request):
         for event in events:
             if isinstance(event, MessageEvent):  # 如果有訊息事件
 
-                if event.message.text == "我要看房！":
+                if event.message.text == "我要看房":
 
                     line_bot_api.reply_message(  # 回復傳入的訊息文字：「行政區」
                         event.reply_token,
