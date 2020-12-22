@@ -13,7 +13,7 @@ import json
 # )
 
 from linebot.models import *
-import utils, call_database, phoetalk
+import utils, call_database, phoetalk, crawler
 
 #-----------------button 測試區1
 # from django.shortcuts import render
@@ -376,6 +376,12 @@ def handle_message(event):
         buttons_template_message)    
         return
     
+    if "爬蟲" in event.message.text:
+        line_bot_api.reply_message(
+        event.reply_token,
+        scrape())    
+        return
+
 
     if '圖片' in event.message.text:
         image_carousel_template_message = TemplateSendMessage(
