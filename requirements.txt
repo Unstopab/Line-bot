@@ -3,3 +3,5 @@ gunicorn
 flask
 psycopg2
 django
+bs4
+abc
