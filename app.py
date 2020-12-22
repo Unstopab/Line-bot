@@ -22,7 +22,7 @@ from django.views.decorators.csrf import csrf_exempt
 from django.conf import settings
 
 from linebot.exceptions import InvalidSignatureError, LineBotApiError
-from .scraper import IFoodie 
+from scraper import Set 
 
 #-----------------以下夾的是本來就要有的
 
@@ -35,7 +35,6 @@ handler = WebhookHandler('b3dd7bebba7dd30ab06e25add81eb054')  #line_bot_api跟ha
 
 #----------------------------------button 測試區1
 parser = WebhookParser('b3dd7bebba7dd30ab06e25add81eb054')
-
 
 @csrf_exempt
 def callback(request):
@@ -206,42 +205,42 @@ def callback(request):
                                     PostbackTemplateAction(  # 將第一步驟、第二步驟選擇的地區，包含在第三步驟的資料中
                                         label='5000以下',
                                         text='5000以下',
-                                        data='C&' + area + build_type + '&5000以下'
+                                        data='C&' + district + build_type + '&5000以下'
                                     ),
                                     PostbackTemplateAction(
                                         label='5000-10000',
                                         text='5000-10000',
-                                        data='C&' + area + build_type + '&5000-10000'
+                                        data='C&' + district + build_type + '&5000-10000'
                                     ),
                                     PostbackTemplateAction(
                                         label='10000-20000',
                                         text='10000-20000',
-                                        data='C&' + area + build_type + '&10000-20000'
+                                        data='C&' + district + build_type + '&10000-20000'
                                     ),
                                     PostbackTemplateAction(
                                         label='20000-30000',
                                         text='20000-30000',
-                                        data='C&' + area + build_type + '&20000-30000'
+                                        data='C&' + district + build_type + '&20000-30000'
                                     ),
                                     PostbackTemplateAction(
                                         label='30000-40000',
                                         text='30000-40000',
-                                        data='C&' + area + build_type + '&30000-40000'
+                                        data='C&' + district + build_type + '&30000-40000'
                                     ),
                                     PostbackTemplateAction(
                                         label='40000-60000',
                                         text='40000-60000',
-                                        data='C&' + area + build_type + '&40000-60000'
+                                        data='C&' + district + build_type + '&40000-60000'
                                     ),
                                     PostbackTemplateAction(
                                         label='60000以上',
                                         text='60000以上',
-                                        data='C&' + area + build_type + '&60000以上'
+                                        data='C&' + district + build_type + '&60000以上'
                                     ),
                                     PostbackTemplateAction(
                                         label='不限',
                                         text='不限',
-                                        data='C&' + area + build_type + '&不限'
+                                        data='C&' + district + build_type + '&不限'
                                     )
                                 ]
                             )
@@ -265,37 +264,37 @@ def callback(request):
                                     PostbackTemplateAction(  # 將第一步驟、第二步驟、第三步驟選擇的地區，包含在第四步驟的資料中
                                         label='10以下',
                                         text='10以下',
-                                        data='D&' + area + build_type + rent + '&10以下'
+                                        data='D&' + district + build_type + rent + '&10以下'
                                     ),
                                     PostbackTemplateAction(
                                         label='10-20',
                                         text='10-20',
-                                        data='D&' + area + build_type + rent + '&10-20'
+                                        data='D&' + district + build_type + rent + '&10-20'
                                     ),
                                     PostbackTemplateAction(
                                         label='20-30',
                                         text='20-30',
-                                        data='D&' + area + build_type + rent + '&20-30'
+                                        data='D&' + district + build_type + rent + '&20-30'
                                     ),
                                     PostbackTemplateAction(
                                         label='30-40',
                                         text='30-40',
-                                        data='D&' + area + build_type + rent + '&30-40'
+                                        data='D&' + district + build_type + rent + '&30-40'
                                     ),
                                     PostbackTemplateAction(
                                         label='40-50',
                                         text='40-50',
-                                        data='D&' + area + build_type + rent + '&40-50'
+                                        data='D&' + district + build_type + rent + '&40-50'
                                     ),
                                     PostbackTemplateAction(
                                         label='50以上',
                                         text='50以上',
-                                        data='D&' + area + build_type + rent + '&50以上'
+                                        data='D&' + district + build_type + rent + '&50以上'
                                     ),
                                     PostbackTemplateAction(
                                         label='不限',
                                         text='不限',
-                                        data='D&' + area  + build_type + rent +  '&不限'
+                                        data='D&' + district  + build_type + rent +  '&不限'
                                     )
                                 ]
                             )
@@ -306,7 +305,7 @@ def callback(request):
 
                     result = event.postback.data[2:].split('&')  # 回傳值的字串切割
 
-                    house = IFoodie(
+                    house = Set(
                         result[0],  # 行政區
                         result[1],  # 房屋類型
                         result[2],  # 租金
@@ -315,13 +314,16 @@ def callback(request):
 
                     line_bot_api.reply_message(  # 回復訊息文字
                         event.reply_token,
-                        # 爬取該地區正在營業，且符合所選擇的美食類別的前五大最高人氣餐廳
+                        # 爬取591網站
                         TextSendMessage(text=house.scrape())
                     )
 
         return HttpResponse()
     else:
         return HttpResponseBadRequest()
+
+
+
 
 
 
