@@ -148,43 +148,42 @@ def download_data(answer):
         for name in soup.find_all("h3"):
             name=name.text.replace("黄金曝光"," ").replace("VIP","").replace(" ","").replace("\n","")
             name_lst.append(name)
-        else:
         #存取物件連結
-            link_lst=[]
-            for link_name in name_lst:
-                link=driver.find_elements_by_link_text(link_name)
-                link_url=link[0].get_attribute("href")
-                link_lst.append(link_url)
+        link_lst=[]
+        for link_name in name_lst:
+            link=driver.find_elements_by_link_text(link_name)
+            link_url=link[0].get_attribute("href")
+            link_lst.append(link_url)
         #存取圖片連結
-            images = str(soup.find_all("li", {"class": "pull-left imageBox"})).split("</div>")
-            i = 0
-            image_list = []
-            for num in range(len(images)-1):
-                i += 1
-                if i == 1:
-                    temp = images[num].split(" ")
-                    image_list.append(temp[9].split("data-original=")[1].strip('"'))
-                else:
-                    temp = images[num].split(" ")
-                    image_list.append(temp[10].split("data-original=")[1].strip('"'))
+        images = str(soup.find_all("li", {"class": "pull-left imageBox"})).split("</div>")
+        i = 0
+        image_list = []
+        for num in range(len(images)-1):
+            i += 1
+            if i == 1:
+                temp = images[num].split(" ")
+                image_list.append(temp[9].split("data-original=")[1].strip('"'))
+            else:
+                temp = images[num].split(" ")
+                image_list.append(temp[10].split("data-original=")[1].strip('"'))
         #存取結果基本資料
-            basic_data_lst=[]
-            basic_data=driver.find_elements_by_class_name("lightBox")
-            for num in range(len(basic_data)):
-                basic_data_lst.append(basic_data[num].text)       
+        basic_data_lst=[]
+        basic_data=driver.find_elements_by_class_name("lightBox")
+        for num in range(len(basic_data)):
+            basic_data_lst.append(basic_data[num].text)       
         #存取結果價格
-            price_lst=[]
-            price=driver.find_elements_by_class_name("price")
-            for num in range(len(price)):
-                price_lst.append(price[num].text)       
+        price_lst=[]
+        price=driver.find_elements_by_class_name("price")
+        for num in range(len(price)):
+            price_lst.append(price[num].text)       
         #印出結果
-            for num in range (len(name_lst)):
-                print(name_lst[num])
-                print(link_lst[num])
-                print(price_lst[num])
-                print(basic_data_lst[num])
-                print(image_list[num])
-                print("\n")
+        for num in range (len(name_lst)):
+            print(name_lst[num])
+            print(link_lst[num])
+            print(price_lst[num])
+            print(basic_data_lst[num])
+            print(image_list[num])
+            print("\n")
     except:
         print("沒有符合條件的房子哦")
 
