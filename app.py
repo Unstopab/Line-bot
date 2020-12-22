@@ -6,8 +6,8 @@ from linebot import (
 
 import json
 # from linebot.exceptions import (
-#     InvalidSignatureError #只是為了測試button才先註解
-)
+#     InvalidSignatureError 
+# ) #只是為了測試button才先註解
 # from linebot.models import (
 #     MessageEvent, TextMessage, TextSendMessage,TemplateSendMessage,ImageCarouselTemplate,ImageCarouselColumn,PostbackAction
 # )
