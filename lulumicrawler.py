@@ -6,39 +6,41 @@ from bs4 import BeautifulSoup
 #輸入條件
 class Set(ABC):
 
-    def __init__(self, district, build_type, rent, ping):
-        self.district = district #行政區
+    # def __init__(self, district, build_type, rent, ping):
+    #     self.district = district #行政區
+    #     self.build_type = build_type #房屋類型
+    #     self.rent = rent #租金
+    #     self.ping = ping #坪數
+    def __init__(self, build_type):
         self.build_type = build_type #房屋類型
-        self.rent = rent #租金
-        self.ping = ping #坪數
-        
+
         #行政區    
-        if self.district == "中山區":
-            self.district = "section=3"
-        elif self.district == "大安區":
-            self.district = "section=5"
-        elif self.district == "信義區":
-            self.district = "section=7"
-        elif self.district == "內湖區":
-            self.district = "section=10" 
-        elif self.district == "士林區":
-            self.district = "section=8"  
-        elif self.district == "中正區":
-            self.district = "section=1"
-        elif self.district == "松山區":
-            self.district = "section=4"  
-        elif self.district == "大同區":
-            self.district = "section=2"
-        elif self.district == "萬華區":
-            self.district = "section=6"
-        elif self.district == "北投區":
-            self.district = "section=9" 
-        elif self.district == "文山區":
-            self.district = "section=12"
-        elif self.district == "南港區":
-            self.district = "section=11" 
-        elif self.district == "不限":
-            self.district = ""
+        # if self.district == "中山區":
+        #     self.district = "section=3"
+        # elif self.district == "大安區":
+        #     self.district = "section=5"
+        # elif self.district == "信義區":
+        #     self.district = "section=7"
+        # elif self.district == "內湖區":
+        #     self.district = "section=10" 
+        # elif self.district == "士林區":
+        #     self.district = "section=8"  
+        # elif self.district == "中正區":
+        #     self.district = "section=1"
+        # elif self.district == "松山區":
+        #     self.district = "section=4"  
+        # elif self.district == "大同區":
+        #     self.district = "section=2"
+        # elif self.district == "萬華區":
+        #     self.district = "section=6"
+        # elif self.district == "北投區":
+        #     self.district = "section=9" 
+        # elif self.district == "文山區":
+        #     self.district = "section=12"
+        # elif self.district == "南港區":
+        #     self.district = "section=11" 
+        # elif self.district == "不限":
+        #     self.district = ""
         
         #房屋類型
         if self.build_type == "整層住家":
@@ -57,38 +59,38 @@ class Set(ABC):
             self.build_type = "kind=24"
     
         #租金
-        if self.rent == "5000以下":
-            self.rent = "rentprice=1"
-        elif self.rent == "5000-10000":
-            self.rent = "rentprice=2"
-        elif self.rent == "10000-20000": 
-            self.rent = "rentprice=3"
-        elif self.rent == "20000-30000":
-            self.rent = "rentprice=4"
-        elif self.rent == "30000-40000":
-            self.rent = "rentprice=5"
-        elif self.rent == "40000-60000":
-            self.rent = "rentprice=6"
-        elif self.rent == "60000以上":
-            self.rent = "rentprice=7"   
-        elif self.rent == "不限":
-            self.rent = "rentprice=0"
+        # if self.rent == "5000以下":
+        #     self.rent = "rentprice=1"
+        # elif self.rent == "5000-10000":
+        #     self.rent = "rentprice=2"
+        # elif self.rent == "10000-20000": 
+        #     self.rent = "rentprice=3"
+        # elif self.rent == "20000-30000":
+        #     self.rent = "rentprice=4"
+        # elif self.rent == "30000-40000":
+        #     self.rent = "rentprice=5"
+        # elif self.rent == "40000-60000":
+        #     self.rent = "rentprice=6"
+        # elif self.rent == "60000以上":
+        #     self.rent = "rentprice=7"   
+        # elif self.rent == "不限":
+        #     self.rent = "rentprice=0"
     
-        #坪數    
-        if self.ping == "10以下":
-            self.ping = "area=0,10"
-        elif self.ping == "10-20":
-            self.ping = "area=10,20"
-        elif self.ping == "20-30": 
-            self.ping = "area=20,30"
-        elif self.ping == "30-40": 
-            self.ping = "area=30,40"
-        elif self.ping == "40-50": 
-            self.ping = "area=40,50"
-        elif self.ping =="50以上":
-            self.ping = "area=50,"
-        elif self.ping =="不限":
-            self.ping = "area=0,0"
+        # #坪數    
+        # if self.ping == "10以下":
+        #     self.ping = "area=0,10"
+        # elif self.ping == "10-20":
+        #     self.ping = "area=10,20"
+        # elif self.ping == "20-30": 
+        #     self.ping = "area=20,30"
+        # elif self.ping == "30-40": 
+        #     self.ping = "area=30,40"
+        # elif self.ping == "40-50": 
+        #     self.ping = "area=40,50"
+        # elif self.ping =="50以上":
+        #     self.ping = "area=50,"
+        # elif self.ping =="不限":
+        #     self.ping = "area=0,0"
 
     @abstractmethod
     def scrape(self):
@@ -101,7 +103,8 @@ class Rent(Set):
         # url="https://rent.591.com.tw/?" + self.build_type +
         #     "&region=1" + self.district + "&" + self.rent + "&" + self.ping
         # print(url)
-        response = requests.get("https://rent.591.com.tw/?" + self.build_type +"&region=1" + self.district + "&" + self.rent + "&" + self.ping)
+        # response = requests.get("https://rent.591.com.tw/?" + self.build_type +"&region=1" + self.district + "&" + self.rent + "&" + self.ping)
+        response = requests.get("https://rent.591.com.tw/?" + self.build_type +"&region=1")
         soup = BeautifulSoup(response.content, "html.parser") 
         print()
         #定位
