@@ -11,7 +11,7 @@ import json
 #     MessageEvent, TextMessage, TextSendMessage,TemplateSendMessage,ImageCarouselTemplate,ImageCarouselColumn,PostbackAction
 # )
 
-from lulumicrawler import go
+import lulumicrawler 
 
 from linebot.models import *
 import utils, call_database, phoetalk, crawler
