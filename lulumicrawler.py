@@ -98,9 +98,9 @@ class Rent(Set):
             
     def scrape(self):
         #設定網址
-        url="https://rent.591.com.tw/?" + self.build_type +
-            "&region=1" + self.district + "&" + self.rent + "&" + self.ping
-        print(url)
+        # url="https://rent.591.com.tw/?" + self.build_type +
+        #     "&region=1" + self.district + "&" + self.rent + "&" + self.ping
+        # print(url)
         response = requests.get("https://rent.591.com.tw/?" + self.build_type +"&region=1" + self.district + "&" + self.rent + "&" + self.ping)
         soup = BeautifulSoup(response.content, "html.parser") 
         print()
