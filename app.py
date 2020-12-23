@@ -51,17 +51,17 @@ def callback(request):
  
         for event in events:
          
-                    if isinstance(event, MessageEvent):  # 如果有訊息事件
+            if isinstance(event, MessageEvent):  # 如果有訊息事件
          
-                        food = Rent(event.message.text)  #使用者傳入的訊息文字
+                food = Rent(event.message.text)  #使用者傳入的訊息文字
          
-                        line_bot_api.reply_message(  # 回應前五間最高人氣且營業中的餐廳訊息文字
-                            event.reply_token,
-                            TextSendMessage(text=Set.scrape())
-                        )
-                return HttpResponse()
-            else:
-                return HttpResponseBadRequest()
+                line_bot_api.reply_message(  # 回應前五間最高人氣且營業中的餐廳訊息文字
+                    event.reply_token,
+                    TextSendMessage(text=Set.scrape())
+                )
+        return HttpResponse()
+    else:
+        return HttpResponseBadRequest()
 
 
 
