@@ -32,6 +32,7 @@ line_bot_api = LineBotApi('9rvIouCQrgODVyuKEfdDdFbaxPffXrTs9qyYuugiJoqHjITy/lcCP
 handler = WebhookHandler('b3dd7bebba7dd30ab06e25add81eb054')  #line_bot_api跟handler，就是接line-bot裡面的參數
 parser = WebhookParser('b3dd7bebba7dd30ab06e25add81eb054') #爬蟲測試用
 
+test = " "
 
 @csrf_exempt
 def callback(request):
@@ -57,7 +58,7 @@ def callback(request):
          
                 line_bot_api.reply_message(  # 回應前五間最高人氣且營業中的餐廳訊息文字
                     event.reply_token,
-                    TextSendMessage(text=go())
+                    TextSendMessage(text=go(test))
                 )
         return HttpResponse()
     else:
