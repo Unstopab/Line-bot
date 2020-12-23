@@ -420,7 +420,11 @@ def handle_message(event):
     elif '找租屋' in event.message.text:        
         line_bot_api.reply_message(
         event.reply_token,
-        TextSendMessage(text="你要找什麼房子?"))       
+        TextSendMessage(text="你要找什麼房子?"))
+    elif '我說宛儒你說' in event.message.text:        
+        line_bot_api.reply_message(
+        event.reply_token,
+        TextSendMessage(text="好棒!"))             
     else:
         line_bot_api.reply_message(
         event.reply_token,
