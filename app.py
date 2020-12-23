@@ -1,7 +1,7 @@
 from flask import Flask, request, abort
 
 from linebot import (
-    LineBotApi, WebhookHandler,WebhookParser#parser是多加的
+    LineBotApi, WebhookHandler, WebhookParser#parser是多加的
 )
 
 import json
