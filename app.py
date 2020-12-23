@@ -1,7 +1,7 @@
 from flask import Flask, request, abort
 
 from linebot import (
-    LineBotApi, WebhookHandler, WebhookParser#parser是多加的
+    LineBotApi, WebhookHandler,WebhookParser#parser是多加的
 )
 
 import json
@@ -11,7 +11,7 @@ import json
 #     MessageEvent, TextMessage, TextSendMessage,TemplateSendMessage,ImageCarouselTemplate,ImageCarouselColumn,PostbackAction
 # )
 
-from lulumicrawler import Rent
+from lulumicrawler import go
 
 from linebot.models import *
 import utils, call_database, phoetalk, crawler
@@ -57,7 +57,7 @@ def callback(request):
          
                 line_bot_api.reply_message(  # 回應前五間最高人氣且營業中的餐廳訊息文字
                     event.reply_token,
-                    TextSendMessage(text=Set.scrape())
+                    TextSendMessage(text=go())
                 )
         return HttpResponse()
     else:
