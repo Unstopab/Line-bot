@@ -5,8 +5,7 @@ from linebot import (
 )
 
 import json
-# from linebot.exceptions import (
-#     InvalidSignatureError 
+# from linebot.exceptions import InvalidSignatureError, LineBotApiError
 # ) #只是為了測試button才先註解
 # from linebot.models import (
 #     MessageEvent, TextMessage, TextSendMessage,TemplateSendMessage,ImageCarouselTemplate,ImageCarouselColumn,PostbackAction
@@ -18,13 +17,12 @@ from linebot.models import *
 import utils, call_database, phoetalk, crawler
 
 #-----------------button 測試區1
-# from django.shortcuts import render
-# from django.http import HttpResponse, HttpResponseBadRequest, HttpResponseForbidden
-# from django.views.decorators.csrf import csrf_exempt
-# from django.conf import settings
+from django.shortcuts import render
+from django.http import HttpResponse, HttpResponseBadRequest, HttpResponseForbidden
+from django.views.decorators.csrf import csrf_exempt
+from django.conf import settings
 
-# from linebot.exceptions import InvalidSignatureError, LineBotApiError
-# from scraper import Set 
+from linebot.exceptions import InvalidSignatureError, LineBotApiError
 
 #-----------------button 測試區1
 
